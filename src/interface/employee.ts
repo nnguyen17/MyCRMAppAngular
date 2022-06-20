@@ -7,5 +7,10 @@ export interface Employee{
     birthDate:Date,
     region:number,
     reportsTo:number,
-    titleOfCourtesy:string
+    titleOfCourtesy:string,
+    address:string,
+    postalCode:number,
+    country:string,
+    phone:string,
+    photoPath:string
 }

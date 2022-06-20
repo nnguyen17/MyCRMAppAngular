@@ -1,0 +1,13 @@
+<form #addOrder="ngForm" (submit) ="insertOrder(addOrder)" >
+    <div class="row">
+        <div class="col-4">
+            <div class="mb-3">
+                <label for="numId">ID</label>
+                <input id="numId" [(ngModel)]="order.id" name="id" class="form-control"/>
+            </div>
+        </div>
+    </div>
+
+    <input type="submit" value="Add Order" class="btn btn-primary"/>
+    <input type="button" value="Cancel" class="btn btn-default" (click)="resetPage(addOrder)"/>
+</form>

@@ -1,0 +1,19 @@
+<form #addCategory="ngForm" (submit) ="insertCategory(addCategory)" >
+    <div class="row">
+        <div class="col-4">
+            <div class="mb-3">
+                <label for="txtName">Name</label>
+                <input id="txtName" [(ngModel)]="category.name" name="name" class="form-control"/>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="mb-3">
+                <label for="txtDescription">Description</label>
+                <input id="txtDescription" [(ngModel)]="category.description" name="description" class="form-control"/>
+            </div>
+        </div>
+    </div>
+
+    <input type="submit" value="Add Category" class="btn btn-primary"/>
+    <input type="button" value="Cancel" class="btn btn-default" (click)="resetPage(addCategory)"/>
+</form>

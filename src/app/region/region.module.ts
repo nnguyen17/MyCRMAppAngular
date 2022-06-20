@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AddRegionComponent } from './add-region/add-region.component';
 import { ListRegionComponent } from './list-region/list-region.component';
 import { RegionRoutingModule } from './region-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +14,8 @@ import { RegionRoutingModule } from './region-routing.module';
   ],
   imports: [
     CommonModule,
-    RegionRoutingModule
+    RegionRoutingModule,
+    FormsModule
   ]
 })
 export class RegionModule { }

@@ -10,15 +10,19 @@ import { Employee } from 'src/interface/employee';
 export class AddEmployeeComponent implements OnInit {
 employee:Employee ={
   firstName: '',
-  lastName:'',
-  city:'',
-  title:'',
-  hireDate:new Date(),
-  birthDate:new Date(),
-  region:0,
-  reportsTo:0,
-  titleOfCourtesy:''
-
+  lastName: '',
+  city: '',
+  title: '',
+  hireDate: new Date(),
+  birthDate: new Date(),
+  region: 0,
+  reportsTo: 0,
+  titleOfCourtesy: '',
+  address: '',
+  postalCode: 0,
+  country: '',
+  phone: '',
+  photoPath: ''
 }
   constructor() { }
 
