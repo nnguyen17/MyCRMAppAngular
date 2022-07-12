@@ -47,10 +47,16 @@ vendor:Vendor ={
   saveVendor(){
     this.vendor.name = this.addVendorForm.value["vendorName"]
     this.vendor.city = this.addVendorForm.value["vendorCity"]
-    this.vendor.city = this.addVendorForm.value["vendorCountry"]
+    this.vendor.country = this.addVendorForm.value["vendorCountry"]
     this.vendor.mobile = this.addVendorForm.value["vendorMobile"]
     this.vendor.emailId = this.addVendorForm.value["vendorEmailId"]
-    this.vendor.isActive = this.addVendorForm.value["vendorIsActive"]
+    let d = this.addVendorForm.value["vendorIsActive"]
+    if(d =="1"){
+      this.vendor.isActive = true
+    }
+    if(d =="0"){
+      this.vendor.isActive = false
+    }
     this.vendorService.insertVendor(this.vendor).subscribe(data =>{
       this.isSuccessful=true;
     })

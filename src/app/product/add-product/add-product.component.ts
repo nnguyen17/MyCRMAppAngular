@@ -58,8 +58,13 @@ product:Product ={
     this.product.unitsInStock = this.addProductForm.value["productUnitsInStock"]
     this.product.unitsOnOrder = this.addProductForm.value["productUnitsOnOrder"]
     this.product.reorderLevel = this.addProductForm.value["productReorderLevel"]
-    this.product.discontinued = this.addProductForm.value["productDiscontinued"]
-    this.product.discontinued = false;
+    let d = this.addProductForm.value["productDiscontinued"]
+    if(d=="1"){
+      this.product.discontinued = true
+    }
+    if(d=="0"){
+      this.product.discontinued = false
+    }
     this.productService.insertProduct(this.product).subscribe(data =>{
       this.isSuccessful=true;
     })

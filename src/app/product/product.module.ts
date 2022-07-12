@@ -7,13 +7,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ProductService } from 'src/services/product.service';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 
 
 @NgModule({
   declarations: [
     AddProductComponent,
-    ListProductComponent
+    ListProductComponent,
+    EditProductComponent
   ],
   imports: [
     CommonModule,
