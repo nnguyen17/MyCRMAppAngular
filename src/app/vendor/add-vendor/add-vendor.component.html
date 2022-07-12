@@ -1,21 +1,29 @@
-<form #addVendor="ngForm" (submit) ="insertVendor(addVendor)" >
+<div *ngIf="isSuccessful"  class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Vendor has been Saved</strong> 
+    <a [routerLink]="'/vendor/list'">Go to Vendor List</a>
+ </div>
+
+<h1 class="display-4">Add Vendor</h1>
+<hr/>
+
+<form [formGroup]="addVendorForm" >
     <div class="row">
         <div class="col-4">
             <div class="mb-3">
                 <label for="txtName">Name</label>
-                <input id="txtName" [(ngModel)]="vendor.name" name="name" class="form-control"/>
+                <input id="txtName" formControlName="vendorName" class="form-control"/>
         </div>
         </div>
         <div class="col-4">
             <div class="mb-3">
                 <label for="txtEmail">Email</label>
-                <input id="txtEmail" [(ngModel)]="vendor.email" name="email" class="form-control"/>
+                <input id="txtEmail" formControlName="vendorEmailId" class="form-control"/>
             </div>
         </div>
         <div class="col-4">
             <div class="mb-3">
                 <label for="txtCity">City</label>
-                <input id="txtCity" [(ngModel)]="vendor.city" name="city" class="form-control"/>
+                <input id="txtCity" formControlName="vendorCity" class="form-control"/>
             </div>
         </div>
     </div>
@@ -24,25 +32,24 @@
         <div class="col-4">
             <div class="mb-3">
                 <label for="txtCountry">Country</label>
-                <input id="txtCountry" [(ngModel)]="vendor.country" name="country" class="form-control"/>
+                <input id="txtCountry" formControlName="vendorCountry" class="form-control"/>
             </div>
         </div>
     
         <div class="col-4">
             <div class="mb-3">
                 <label for="txtMobile">Mobile</label>
-                <input id="txtMobile" [(ngModel)]="vendor.mobile" name="mobile" class="form-control"/>
+                <input id="txtMobile" formControlName="vendorMobile" class="form-control"/>
             </div>
          </div>
     
         <div class="col-4">
             <div class="mb-3">
                 <label for="boolIsActive">Is Active?</label>
-                <input id="boolIsActive" [(ngModel)]="vendor.isActive" name="isActive" class="form-control"/>
+                <input id="boolIsActive" formControlName="vendorIsActive" class="form-control"/>
             </div>
         </div>
    </div>
 
-    <input type="submit" value="Add Vendor" class="btn btn-primary"/>
-    <input type="button" value="Cancel" class="btn btn-default" (click)="resetPage(addVendor)"/>
+   <input type="button" class="btn btn-primary" value="Save Vendor" (click)="saveVendor()" />
 </form>

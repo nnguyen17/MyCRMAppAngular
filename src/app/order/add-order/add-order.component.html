@@ -1,13 +1,20 @@
-<form #addOrder="ngForm" (submit) ="insertOrder(addOrder)" >
+<div *ngIf="isSuccessful"  class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Order has been Saved</strong> 
+    <a [routerLink]="'/order/list'">Go to Order List</a>
+ </div>
+
+<h1 class="display-4">Add Order</h1>
+<hr/>
+
+<form [formGroup]="addOrderForm" >
     <div class="row">
         <div class="col-4">
             <div class="mb-3">
                 <label for="numId">ID</label>
-                <input id="numId" [(ngModel)]="order.id" name="id" class="form-control"/>
+                <input id="numId" formControlName="orderId" class="form-control"/>
             </div>
         </div>
     </div>
 
-    <input type="submit" value="Add Order" class="btn btn-primary"/>
-    <input type="button" value="Cancel" class="btn btn-default" (click)="resetPage(addOrder)"/>
+    <input type="button" class="btn btn-primary" value="Save Order" (click)="saveOrder()" />
 </form>

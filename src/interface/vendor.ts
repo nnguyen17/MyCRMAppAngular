@@ -1,8 +1,9 @@
 export interface Vendor{
+    id:number,
     name:string,
     city:string,
     country:string,
     mobile:string,
-    email:string,
+    emailId:string,
     isActive:boolean
 }

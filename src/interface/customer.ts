@@ -1,9 +1,10 @@
 export interface Customer{
+    id:number,
     name:string,
     title:string,
     address:string,
     city:string,
-    region:number,
+    regionId:number,
     postalCode:number,
     country:string,
     phone:string

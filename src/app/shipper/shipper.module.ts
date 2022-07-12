@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 import { AddShipperComponent } from './add-shipper/add-shipper.component';
 import { ListShipperComponent } from './list-shipper/list-shipper.component';
 import { ShipperRoutingModule } from './shipper-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { ShipperService } from 'src/services/shipper.service';
 
 
 
@@ -15,7 +18,14 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ShipperRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule
+  ],
+  providers: [
+    ShipperService
   ]
+  
 })
 export class ShipperModule { }

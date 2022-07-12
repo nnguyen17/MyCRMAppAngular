@@ -1,21 +1,29 @@
-<form #addCustomer="ngForm" (submit) ="insertCustomer(addCustomer)" >
+<div *ngIf="isSuccessful"  class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Customer has been Saved</strong> 
+    <a [routerLink]="'/customer/list'">Go to Customer List</a>
+ </div>
+
+<h1 class="display-4">Add Customer</h1>
+<hr/>
+
+<form [formGroup]="addCustomerForm" >
     <div class="row">
         <div class="col-4">
             <div class="mb-3">
                 <label for="txtName">Name</label>
-                <input id="txtName" [(ngModel)]="customer.name" name="name" class="form-control"/>
+                <input id="txtName" formControlName="customerName" class="form-control"/>
         </div>
         </div>
         <div class="col-4">
             <div class="mb-3">
                 <label for="txtTitle">Title</label>
-                <input id="txtTitle" [(ngModel)]="customer.title" name="title" class="form-control"/>
+                <input id="txtTitle" formControlName="customerTitle" class="form-control"/>
             </div>
         </div>
         <div class="col-4">
             <div class="mb-3">
                 <label for="txtCity">City</label>
-                <input id="txtCity" [(ngModel)]="customer.city" name="city" class="form-control"/>
+                <input id="txtCity" formControlName="customerCity" class="form-control"/>
             </div>
         </div>
     </div>
@@ -24,21 +32,21 @@
         <div class="col-4">
             <div class="mb-3">
                 <label for="txtAddress">Address</label>
-                <input id="txtAddress" [(ngModel)]="customer.address" name="address" class="form-control"/>
+                <input id="txtAddress" formControlName="customerAddress" class="form-control"/>
             </div>
         </div>
     
         <div class="col-4">
             <div class="mb-3">
                 <label for="numRegion">Region</label>
-                <input id="numRegion" [(ngModel)]="customer.region" name="region" class="form-control"/>
+                <input id="numRegion" formControlName="customerRegion" class="form-control"/>
             </div>
          </div>
     
         <div class="col-4">
             <div class="mb-3">
                 <label for="numPostalCode">Postal Code</label>
-                <input id="numPostalCode" [(ngModel)]="customer.postalCode" name="postalCode" class="form-control"/>
+                <input id="numPostalCode" formControlName="customerPostalCode" class="form-control"/>
             </div>
         </div>
    </div>
@@ -47,18 +55,17 @@
         <div class="col-4">
             <div class="mb-3">
                 <label for="txtCountry">Country</label>
-                <input id="txtCountry" [(ngModel)]="customer.country" name="country" class="form-control"/>
+                <input id="txtCountry" formControlName="customerCountry" class="form-control"/>
             </div>
         </div>
 
         <div class="col-4">
             <div class="mb-3">
                 <label for="txtPhone">Phone</label>
-                <input id="txtPhone" [(ngModel)]="customer.phone" name="phone" class="form-control"/>
+                <input id="txtPhone" formControlName="customerPhone" class="form-control"/>
             </div>
         </div>
     </div>
 
-    <input type="submit" value="Add Customer" class="btn btn-primary"/>
-    <input type="button" value="Cancel" class="btn btn-default" (click)="resetPage(addCustomer)"/>
+    <input type="button" class="btn btn-primary" value="Save Customer" (click)="saveCustomer()" />
 </form>

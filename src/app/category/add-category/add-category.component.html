@@ -1,19 +1,26 @@
-<form #addCategory="ngForm" (submit) ="insertCategory(addCategory)" >
+<div *ngIf="isSuccessful"  class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Category has been Saved</strong> 
+    <a [routerLink]="'/category/list'">Go to Category List</a>
+ </div>
+
+ <h1 class="display-4">Add Category</h1>
+<hr/>
+
+<form [formGroup]="addCategoryForm" >
     <div class="row">
         <div class="col-4">
             <div class="mb-3">
                 <label for="txtName">Name</label>
-                <input id="txtName" [(ngModel)]="category.name" name="name" class="form-control"/>
+                <input id="txtName" formControlName="categoryName" class="form-control"/>
             </div>
         </div>
         <div class="col-4">
             <div class="mb-3">
                 <label for="txtDescription">Description</label>
-                <input id="txtDescription" [(ngModel)]="category.description" name="description" class="form-control"/>
+                <input id="txtDescription" formControlName="categoryDescription" class="form-control"/>
             </div>
         </div>
     </div>
 
-    <input type="submit" value="Add Category" class="btn btn-primary"/>
-    <input type="button" value="Cancel" class="btn btn-default" (click)="resetPage(addCategory)"/>
+    <input type="button" class="btn btn-primary" value="Save Category" (click)="saveCategory()" />
 </form>

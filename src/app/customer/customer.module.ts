@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { ListCustomerComponent } from './list-customer/list-customer.component';
 import { CustomerRoutingModule } from './customer-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { CustomerService } from 'src/services/customer.service';
 
 
 
@@ -15,7 +18,14 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     CustomerRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule
+  ],
+  providers: [
+    CustomerService
   ]
+  
 })
 export class CustomerModule { }

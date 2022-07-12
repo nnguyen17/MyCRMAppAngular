@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
 import { Vendor } from 'src/interface/vendor';
+import { VendorService } from 'src/services/vendor.service';
 
 @Component({
   selector: 'app-add-vendor',
@@ -13,10 +14,25 @@ vendor:Vendor ={
   city: '',
   country: '',
   mobile: '',
-  email: '',
-  isActive: false
+  emailId: '',
+  isActive: false,
+  id: 0
 }
-  constructor() { }
+
+  addVendorForm:FormGroup;
+
+  isSuccessful:boolean=false;
+
+  constructor(private builder:FormBuilder, private vendorService:VendorService) { 
+    this.addVendorForm = builder.group({
+      'vendorName':new FormControl(),
+      'vendorCity':new FormControl(),
+      'vendorCountry':new FormControl(),
+      'vendorMobile':new FormControl(),
+      'vendorEmailId':new FormControl(),
+      'vendorIsActive':new FormControl()
+    });
+  }
 
   ngOnInit(): void {
   }
@@ -25,6 +41,18 @@ vendor:Vendor ={
     console.log(form.value)
   }
   resetPage(form:NgForm){
-form.reset();
+    form.reset();
+  }
+
+  saveVendor(){
+    this.vendor.name = this.addVendorForm.value["vendorName"]
+    this.vendor.city = this.addVendorForm.value["vendorCity"]
+    this.vendor.city = this.addVendorForm.value["vendorCountry"]
+    this.vendor.mobile = this.addVendorForm.value["vendorMobile"]
+    this.vendor.emailId = this.addVendorForm.value["vendorEmailId"]
+    this.vendor.isActive = this.addVendorForm.value["vendorIsActive"]
+    this.vendorService.insertVendor(this.vendor).subscribe(data =>{
+      this.isSuccessful=true;
+    })
   }
 }

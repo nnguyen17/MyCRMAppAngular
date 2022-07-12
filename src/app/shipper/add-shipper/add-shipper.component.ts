@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
 import { Shipper } from 'src/interface/shipper';
+import { ShipperService } from 'src/services/shipper.service';
 
 @Component({
   selector: 'app-add-shipper',
@@ -10,9 +11,20 @@ import { Shipper } from 'src/interface/shipper';
 export class AddShipperComponent implements OnInit {
 shipper:Shipper ={
   name: '',
-  phone: ''
+  phone: '',
+  id: 0
 }
-  constructor() { }
+
+  addShipperForm:FormGroup;
+
+  isSuccessful:boolean=false;
+
+  constructor(private builder:FormBuilder, private shipperService:ShipperService) { 
+    this.addShipperForm = builder.group({
+      'shipperName':new FormControl(),
+      'shipperPhone':new FormControl()
+    });
+  }
 
   ngOnInit(): void {
   }
@@ -21,6 +33,14 @@ shipper:Shipper ={
     console.log(form.value)
   }
   resetPage(form:NgForm){
-form.reset();
+    form.reset();
+  }
+
+  saveShipper(){
+    this.shipper.name = this.addShipperForm.value["shipperName"]
+    this.shipper.phone = this.addShipperForm.value["shipperPhone"]
+    this.shipperService.insertShipper(this.shipper).subscribe(data =>{
+      this.isSuccessful=true;
+    })
   }
 }

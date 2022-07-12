@@ -3,7 +3,19 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiKey:'https://localhost:44373/api/',
+  apiControllers:
+  {
+    category:"category",
+    customer:"customer",
+    employee:"employee",
+    order:"order",
+    product:"product",
+    region:"region",
+    shipper:"shipper",
+    vendor:"vendor"
+  }
 };
 
 /*

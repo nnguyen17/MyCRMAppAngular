@@ -1,19 +1,27 @@
-<form #addShipper="ngForm" (submit) ="insertShipper(addShipper)" >
+<div *ngIf="isSuccessful"  class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Shipper has been Saved</strong> 
+    <a [routerLink]="'/shipper/list'">Go to Shipper List</a>
+ </div>
+
+<h1 class="display-4">Add Shipper</h1>
+<hr/>
+
+
+<form [formGroup]="addShipperForm" >
     <div class="row">
         <div class="col-4">
             <div class="mb-3">
                 <label for="txtName">Name</label>
-                <input id="txtName" [(ngModel)]="shipper.name" name="name" class="form-control"/>
+                <input id="txtName" formControlName="shipperName" class="form-control"/>
             </div>
         </div>
         <div class="col-4">
             <div class="mb-3">
                 <label for="txtPhone">Phone</label>
-                <input id="txtPhone" [(ngModel)]="shipper.phone" name="phone" class="form-control"/>
+                <input id="txtPhone" formControlName="shipperPhone" class="form-control"/>
             </div>
         </div>
     </div>
 
-    <input type="submit" value="Add Shipper" class="btn btn-primary"/>
-    <input type="button" value="Cancel" class="btn btn-default" (click)="resetPage(addShipper)"/>
+    <input type="button" class="btn btn-primary" value="Save Shipper" (click)="saveShipper()" />
 </form>

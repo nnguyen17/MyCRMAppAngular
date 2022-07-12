@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 import { AddVendorComponent } from './add-vendor/add-vendor.component';
 import { ListVendorComponent } from './list-vendor/list-vendor.component';
 import { VendorRoutingModule } from './vendor-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { VendorService } from 'src/services/vendor.service';
 
 
 
@@ -15,7 +18,14 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     VendorRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule
+  ],
+  providers: [
+    VendorService
   ]
+  
 })
 export class VendorModule { }

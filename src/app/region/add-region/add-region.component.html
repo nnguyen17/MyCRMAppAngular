@@ -1,13 +1,20 @@
-<form #addRegion="ngForm" (submit) ="insertRegion(addRegion)" >
+<div *ngIf="isSuccessful"  class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Region has been Saved</strong> 
+    <a [routerLink]="'/region/list'">Go to Region List</a>
+ </div>
+
+<h1 class="display-4">Add Region</h1>
+<hr/>
+
+<form [formGroup]="addRegionForm" >
     <div class="row">
         <div class="col-4">
             <div class="mb-3">
                 <label for="txtName">Name</label>
-                <input id="txtName" [(ngModel)]="region.name" name="name" class="form-control"/>
+                <input id="txtName" formControlName="regionName" class="form-control"/>
             </div>
         </div>
     </div>
 
-    <input type="submit" value="Add Region" class="btn btn-primary"/>
-    <input type="button" value="Cancel" class="btn btn-default" (click)="resetPage(addRegion)"/>
+    <input type="button" class="btn btn-primary" value="Save Region" (click)="saveRegion()" />
 </form>

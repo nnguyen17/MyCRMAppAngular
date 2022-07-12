@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ListProductComponent } from './list-product/list-product.component';
 import { ProductRoutingModule } from './product-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { ProductService } from 'src/services/product.service';
 
 
 
@@ -15,7 +18,14 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ProductRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule
+  ],
+  providers: [
+    ProductService
   ]
+  
 })
 export class ProductModule { }

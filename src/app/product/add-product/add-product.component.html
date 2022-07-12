@@ -1,21 +1,30 @@
-<form #addProduct="ngForm" (submit) ="insertProduct(addProduct)" >
+<div *ngIf="isSuccessful"  class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Product has been Saved</strong> 
+    <a [routerLink]="'/product/list'">Go to Product List</a>
+ </div>
+
+<h1 class="display-4">Add Product</h1>
+<hr/>
+
+
+<form [formGroup]="addProductForm" >
     <div class="row">
         <div class="col-4">
             <div class="mb-3">
                 <label for="txtName">Name</label>
-                <input id="txtName" [(ngModel)]="product.name" name="name" class="form-control"/>
+                <input id="txtName" formControlName="productName" class="form-control"/>
         </div>
         </div>
         <div class="col-4">
             <div class="mb-3">
                 <label for="numVendor">Vendor</label>
-                <input id="numVendor" [(ngModel)]="product.vendor" name="vendor" class="form-control"/>
+                <input id="numVendor" formControlName="productVendorId" class="form-control"/>
             </div>
         </div>
         <div class="col-4">
             <div class="mb-3">
                 <label for="numCategory">Category</label>
-                <input id="numCategory" [(ngModel)]="product.category" name="category" class="form-control"/>
+                <input id="numCategory" formControlName="productCategoryId" class="form-control"/>
             </div>
         </div>
     </div>
@@ -24,21 +33,21 @@
         <div class="col-4">
             <div class="mb-3">
                 <label for="numQuantityPerUnit">Quantity per Unit</label>
-                <input id="numQuantityPerUnit" [(ngModel)]="product.quantityPerUnit" name="quantityPerUnit" class="form-control"/>
+                <input id="numQuantityPerUnit" formControlName="productQuantityPerUnit" class="form-control"/>
             </div>
         </div>
     
         <div class="col-4">
             <div class="mb-3">
                 <label for="numUnitPrice">Unit Price</label>
-                <input id="numUnitPrice" [(ngModel)]="product.unitPrice" name="unitPrice" class="form-control"/>
+                <input id="numUnitPrice" formControlName="productUnitPrice" class="form-control"/>
             </div>
          </div>
     
         <div class="col-4">
             <div class="mb-3">
                 <label for="numUnitsInStock">Units In Stock</label>
-                <input id="numUnitsInStock" [(ngModel)]="product.unitsInStock" name="unitsInStock" class="form-control"/>
+                <input id="numUnitsInStock" formControlName="productUnitsInStock" class="form-control"/>
             </div>
         </div>
    </div>
@@ -47,25 +56,27 @@
         <div class="col-4">
             <div class="mb-3">
                 <label for="numUnitsOnOrder">Units On Order</label>
-                <input id="numUnitsOnOrder" [(ngModel)]="product.unitsOnOrder" name="unitsOnOrder" class="form-control"/>
+                <input id="numUnitsOnOrder" formControlName="productUnitsOnOrder" class="form-control"/>
             </div>
         </div>
 
         <div class="col-4">
             <div class="mb-3">
                 <label for="numReorderLevel">Reorder Level</label>
-                <input id="numReorderLevel" [(ngModel)]="product.reorderLevel" name="reorderLevel" class="form-control"/>
+                <input id="numReorderLevel" formControlName="productReorderLevel" class="form-control"/>
             </div>
         </div>
 
         <div class="col-4">
             <div class="mb-3">
                 <label for="boolDiscontinued">Discontinued?</label>
-                <input id="boolDiscontinued" [(ngModel)]="product.discontinued" name="discontinued" class="form-control"/>
+                <select id="boolDiscontinued" formControlName="productDiscontinued" class="form-control">
+                    <option [ngValue]=true>True</option>
+                    <option [ngValue]=false>False</option>
+                </select>
             </div>
         </div>
     </div>
 
-    <input type="submit" value="Add Product" class="btn btn-primary"/>
-    <input type="button" value="Cancel" class="btn btn-default" (click)="resetPage(addProduct)"/>
+    <input type="button" class="btn btn-primary" value="Save Product" (click)="saveProduct()" />
 </form>

@@ -1,7 +1,8 @@
 export interface Product{
+    id:number,
     name:string,
-    vendor:number,
-    category:number,
+    vendorId:number,
+    categoryId:number,
     quantityPerUnit:number,
     unitPrice:number,
     unitsInStock:number,

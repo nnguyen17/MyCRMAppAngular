@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Shipper } from 'src/interface/shipper';
+import { ShipperService } from 'src/services/shipper.service';
 
 @Component({
   selector: 'app-list-shipper',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListShipperComponent implements OnInit {
 
-  constructor() { }
+  shipperCollection:Shipper[] = []
+  constructor(private shipperService:ShipperService) {
+
+   }
 
   ngOnInit(): void {
+    this.getData();
+  }
+
+  getData(){
+    this.shipperService.getShipper().subscribe(data=>{
+      this.shipperCollection = data
+    })
+  }
+
+  deleteShipper(id:any){
+    this.shipperService.deleteShipper(id).subscribe(data => {
+      this.getData();
+    });
   }
 
 }
